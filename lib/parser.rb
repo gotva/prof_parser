@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'pry'
 
 class Parser
 
@@ -9,11 +10,35 @@ class Parser
   end
 
   def run
-    p "started with url: #{@url}"
-    p "output to: #{@filename}"
+    # TODO validate url here
+
+    related_paths = CategoryPage.new(@url).product_paths
+    ProductPage.new(@url, related_path).product_data
   end
 
 end
 
-# page = Nokogiri::HTML(open("http://en.wikipedia.org/"))
-# puts page.class   # => Nokogiri::HTML::Document
+class CategoryPage
+
+  def initialize(url)
+    @url = url
+  end
+
+  # parse **related** product paths
+  def product_paths
+    page = Nokogiri::HTML(open(@url))
+    page.xpath("//div[contains(@class, 'floating-content-box')]//div[contains(@class, 'gridbox')]/a/@href")
+  end
+end
+
+class ProductPage
+
+  def initialize(url, paths)
+    @url = url
+    @paths = paths
+  end
+
+  def product_data
+  end
+
+end

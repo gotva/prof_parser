@@ -15,8 +15,18 @@ Example of generated output is [here](https://github.com/gotva/prof_parser/blob/
 TieParser
 ===========
 
-To use this parser you need to setup chromedriver.
+usage:
+```ruby
+ruby tie_parse.rb tire_output.csv
+Process is completed (~16 sec.)
+See results in tire_output.csv
+"browser is closed"
+```
 
+Example of generated output is [here](https://github.com/gotva/prof_parser/blob/master/example/tire_output.csv)
+
+
+You can use chromedriver for browser, for this:
 Go to http://chromedriver.storage.googleapis.com/index.html
 Download chromedriver
 Place unzipped file to /usr/local/bin

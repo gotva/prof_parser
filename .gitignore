@@ -1,1 +1,4 @@
 *.csv
+
+!example/output.csv
+!example/tire_output.csv
